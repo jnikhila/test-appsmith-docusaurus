@@ -67,9 +67,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       algolia: {
-        appId: 'wew',
-        apiKey: 'wwwe',
-        indexName: 'we',
+        appId: 'QGHQDC1P8U',
+        apiKey: 'c311dba8affc50930ded9052638e6558',
+        indexName: 'appsmithdocusaurusindex',
         contextualSearch: false,
 
         //... other Algolia params
