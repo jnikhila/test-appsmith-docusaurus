@@ -25,16 +25,18 @@ jobs:
           
       - uses: actions/setup-node@v1
         with:
-          node-version: "18.9.1"
+          node-version: "18.10.0"
           cache: npm
           
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Build website
         run: yarn build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
+      
       - name: Docusaurus BuildDeploy Action
         uses: redkubes/docusaurus-deploy-action@v1.2
         with:
