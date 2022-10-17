@@ -68,7 +68,7 @@ const config = {
     ({
       algolia: {
         appId: 'QGHQDC1P8U',
-        apiKey: 'ab1ff4e8eb4cd04a40d4ca39a00b73cc',
+        apiKey: 'e5db46347755da6658e325069bf8238d',
         indexName: 'appsmithdocusaurusindex',
         contextualSearch: false,
 
