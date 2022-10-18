@@ -1,23 +1,17 @@
-name: Deploy to GitHub Pages
-
 on:
   workflow_dispatch:
+    branches:
+      - 'main'
   push:
     branches:
-      - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+      - 'main'
 
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+  build-and-scrape-site:
+    name: Deploy and scrape static site
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: /
 
     steps:
-
-      - name: Run Crawler
+      - name: Run Docker container
         run: |
-             docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper:latest
+          docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat ./config.json | jq -r tostring)" algolia/docsearch-scraper
