@@ -1,16 +1,26 @@
+name: Deploy to GitHub Pages
+
 on:
   workflow_dispatch:
-
   push:
     branches:
-      - 'main'
+      - main
 
 jobs:
-  build-and-scrape-site:
-    name: Deploy and scrape static site
+  deploy:
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: test-appsmith-docusaurus
+        shell: bash
 
     steps:
+      # Checkout the code
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Run Docker container
         run: |
           echo "$GITHUB_WORKSPACE"
