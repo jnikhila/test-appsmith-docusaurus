@@ -1,4 +1,4 @@
-name: Run Crawler
+name: Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
@@ -10,14 +10,14 @@ on:
 
 jobs:
   deploy:
-    name: Algolia ReCrawl
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash
+        working-directory: test-appsmith-docusaurus
 
     steps:
-     - name: Run Crawler
-       run: |
-             docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat /config.json | jq -r tostring)" algolia/docsearch-scraper:latest
-       working-directory: test-appsmith-docusaurus
+
+      - name: Run Crawler
+        run: |
+             docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper:latest
