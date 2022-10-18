@@ -15,8 +15,9 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: test-appsmith-docusaurus
 
     steps:
       - name: Update Index
-        run: |
-             docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat /config.json | jq -r tostring)" algolia/docsearch-scraper:latest
+         run:|
+          docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat ./config.json | jq -r tostring)" algolia/docsearch-scraper:latest
