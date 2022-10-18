@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Run Docker container
         run: |
-          echo "${{GITHUB_WORKSPACE}}"
+          echo "$GITHUB_WORKSPACE"
           docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
