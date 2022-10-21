@@ -24,4 +24,4 @@ jobs:
       - name: Run Docker container
         run: |
           echo "$GITHUB_WORKSPACE"
-          docker run -e "APPLICATION_ID=${{ secrets.APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_API_KEY }}" -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
+          docker run -e "APPLICATION_ID=${{ secrets.ALGOLIA_TEST_APPLICATION_ID }}" -e "ALGOLIA_API_KEY=${{ secrets.ALGOLIA_TEST_API_KEY }}" -e "CONFIG=$(cat config.json | jq -r tostring)" algolia/docsearch-scraper
